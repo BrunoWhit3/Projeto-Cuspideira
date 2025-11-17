@@ -1,0 +1,36 @@
+// C++ code
+//
+
+const int pedalPin = 2;
+const int valvulaPin = 8;
+
+int ultimoEstadoPedal = HIGH;
+
+void setup()
+{
+  pinMode(pedalPin, INPUT_PULLUP);
+  pinMode(valvulaPin, OUTPUT);
+  digitalWrite(valvulaPin, LOW);
+  Serial.begin(9600);
+  Serial.println("Sistema da cuspideira iniciado.");
+}
+
+void loop()
+{
+  int pedalState = digitalRead(pedalPin);
+  
+  if (pedalState != ultimoEstadoPedal) {
+  	ultimoEstadoPedal = pedalState;
+    
+    if (pedalState == LOW) {
+  	digitalWrite(valvulaPin, HIGH);
+    Serial.println("Pedal pressionado -> Válvula aberta");
+    }
+    else {
+      digitalWrite(valvulaPin, LOW);
+      Serial.println("Pedal solto -> Válvula fechada");
+    }
+  }
+  
+  delay(500);
+}
