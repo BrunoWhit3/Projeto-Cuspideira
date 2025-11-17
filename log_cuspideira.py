@@ -2,7 +2,7 @@
 import serial
 import time
 
-def conectar_arduino(porta="/dev/ttyACM0", baud=9600):
+def conectar_arduino(porta="COM3", baud=9600):
     while True:
         try:
             print(f"Tentando conectar ao Arduino em {porta}...")
@@ -23,7 +23,7 @@ def loop_principal():
                 print("Arduino ->", linha)
 
         except serial.SerialException:
-            print("⚠️ Arduino foi desconectado!")
+            print("Arduino foi desconectado!")
             print("Aguardando reconexão...")
             arduino = conectar_arduino()
 
