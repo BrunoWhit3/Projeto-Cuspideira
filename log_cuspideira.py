@@ -11,7 +11,7 @@ def conectar_arduino(porta="COM3", baud=9600):
             print("Arduino conectado!")
             return arduino
         except:
-            print("Arduino não encontrado. Tentando novamente em 2s...")
+            print("Arduino nao encontrado. Tentando novamente em 2s...")
             time.sleep(2)
 
 def loop_principal():
@@ -25,7 +25,7 @@ def loop_principal():
 
         except serial.SerialException:
             print("Arduino foi desconectado!")
-            print("Aguardando reconexão...")
+            print("Aguardando reconexao...")
             arduino = conectar_arduino()
 
         except Exception as e:
