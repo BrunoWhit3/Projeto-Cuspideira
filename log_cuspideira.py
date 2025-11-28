@@ -35,6 +35,7 @@ def main():
             except KeyboardInterrupt:
                 print("\nFinalizado pelo usuario.")
                 break
+                
             except Exception as e:
                 print("Erro ao ler:", e)
 
