@@ -25,16 +25,24 @@ def loop_principal():
                     print("Arduino -> ", linha)
                     log.write(linha + "/n")
                     log.flush()
-
+            
+            except KeyboardInterrupt:
+                print("\nFinalizado pelo usuario.")
+                break
+            
             except serial.SerialException:
                 print("Arduino foi desconectado!")
                 print("Aguardando reconexao...")
                 arduino = conectar_arduino()
-
+            
             except Exception as e:
                 print("Erro inesperado:", e)
                 time.sleep(1)
-                
+
+
+    arduino.close()
+
+
 
 if __name__ == "__main__":
     loop_principal()
