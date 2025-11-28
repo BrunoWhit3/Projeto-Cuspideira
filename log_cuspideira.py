@@ -7,6 +7,7 @@ def conectar_arduino(porta="COM3", baud=9600):
         try:
             print(f"Tentando conectar ao Arduino em {porta}...")
             arduino = serial.Serial(porta, baud, timeout=1)
+            time.sleep(2)
             print("Arduino conectado!")
             return arduino
         except:
