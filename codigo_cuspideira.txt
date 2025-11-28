@@ -10,7 +10,7 @@ void setup()
 {
   pinMode(pedalPin, INPUT_PULLUP);
   pinMode(valvulaPin, OUTPUT);
-  digitalWrite(valvulaPin, LOW);
+  digitalWrite(valvulaPin, HIGH);
   Serial.begin(9600);
   Serial.println("Sistema da cuspideira iniciado.");
 }
@@ -23,14 +23,15 @@ void loop()
   	ultimoEstadoPedal = pedalState;
     
     if (pedalState == LOW) {
-  	digitalWrite(valvulaPin, HIGH);
+  	digitalWrite(valvulaPin, LOW);
     Serial.println("Pedal pressionado -> Válvula aberta");
     }
     else {
-      digitalWrite(valvulaPin, LOW);
+      digitalWrite(valvulaPin, HIGH);
       Serial.println("Pedal solto -> Válvula fechada");
     }
   }
   
   delay(500);
+
 }
