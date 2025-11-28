@@ -17,20 +17,24 @@ def conectar_arduino(porta="COM3", baud=9600):
 def loop_principal():
     arduino = conectar_arduino()
 
-    while True:
-        try:
-            if arduino.in_waiting > 0:
-                linha = arduino.readline().decode(errors="ignore").strip()
-                print("Arduino ->", linha)
+    with open("log_cuspideira.txt", "a") as log:
+        while True:
+            try:
+                if arduino.in_waiting > 0:
+                    linha = arduino.readline().decode(errors="ignore").strip()
+                    print("Arduino -> ", linha)
+                    log.write(linha + "/n")
+                    log.flush()
 
-        except serial.SerialException:
-            print("Arduino foi desconectado!")
-            print("Aguardando reconexao...")
-            arduino = conectar_arduino()
+            except serial.SerialException:
+                print("Arduino foi desconectado!")
+                print("Aguardando reconexao...")
+                arduino = conectar_arduino()
 
-        except Exception as e:
-            print("Erro inesperado:", e)
-            time.sleep(1)
+            except Exception as e:
+                print("Erro inesperado:", e)
+                time.sleep(1)
+                
 
 if __name__ == "__main__":
     loop_principal()
