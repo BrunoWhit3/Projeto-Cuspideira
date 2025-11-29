@@ -24,14 +24,15 @@ void loop()
     
     if (pedalState == LOW) {
   	digitalWrite(valvulaPin, LOW);
-    Serial.println("Pedal pressionado -> Válvula aberta");
+    Serial.println("Pedal pressionado -> Valvula aberta");
     }
     else {
       digitalWrite(valvulaPin, HIGH);
-      Serial.println("Pedal solto -> Válvula fechada");
+      Serial.println("Pedal solto -> Valvula fechada");
     }
   }
   
   delay(500);
 
 }
+
